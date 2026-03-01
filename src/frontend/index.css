@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   EMERGENCY MEDICAL INFORMATION ACCESS SYSTEM
+   Design: Clean, professional medical theme
+   Primary: Clinical Blue | Neutral: Soft Gray | White base
+   Typography: Outfit (body/UI) + Fraunces (display)
+   ========================================================= */
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Medical Blue Palette — OKLCH L C H */
+    --background:     0.985 0.002 240;
+    --foreground:     0.18  0.015 240;
+
+    --card:           1     0     0;
+    --card-foreground: 0.18 0.015 240;
+
+    --popover:        1     0     0;
+    --popover-foreground: 0.18 0.015 240;
+
+    /* Primary: Clinical blue */
+    --primary:        0.45  0.16  240;
+    --primary-foreground: 1 0 0;
+
+    /* Secondary: Pale blue tint */
+    --secondary:      0.94  0.025 240;
+    --secondary-foreground: 0.3 0.04 240;
+
+    /* Muted: light gray */
+    --muted:          0.96  0.005 240;
+    --muted-foreground: 0.52 0.02 240;
+
+    /* Accent: Sky blue */
+    --accent:         0.91  0.04  240;
+    --accent-foreground: 0.3 0.1 240;
+
+    /* Destructive: Medical red */
+    --destructive:    0.56  0.22  25;
+    --destructive-foreground: 1 0 0;
+
+    --border:         0.9   0.01  240;
+    --input:          0.93  0.01  240;
+    --ring:           0.45  0.16  240;
+
+    /* Medical-specific tokens */
+    --medical-blue:   0.45  0.16  240;
+    --medical-blue-light: 0.88 0.06 240;
+    --medical-red:    0.55  0.22  25;
+    --medical-amber:  0.72  0.16  58;
+    --medical-green:  0.55  0.16  155;
+
+    --chart-1: 0.45 0.16 240;
+    --chart-2: 0.55 0.16 155;
+    --chart-3: 0.72 0.16 58;
+    --chart-4: 0.55 0.22 25;
+    --chart-5: 0.62 0.14 290;
+
+    --sidebar: 0.97 0.008 240;
+    --sidebar-foreground: 0.18 0.015 240;
+    --sidebar-primary: 0.45 0.16 240;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.91 0.04 240;
+    --sidebar-accent-foreground: 0.3 0.1 240;
+    --sidebar-border: 0.9 0.01 240;
+    --sidebar-ring: 0.45 0.16 240;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Outfit", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Outfit", sans-serif;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+}
+
+@layer utilities {
+  /* Medical theme utility classes */
+  .text-medical-blue { color: oklch(var(--medical-blue)); }
+  .bg-medical-blue { background-color: oklch(var(--medical-blue)); }
+  .bg-medical-blue-light { background-color: oklch(var(--medical-blue-light)); }
+  .text-medical-red { color: oklch(var(--medical-red)); }
+  .bg-medical-red-light { background-color: oklch(0.95 0.03 25); }
+  .text-medical-amber { color: oklch(var(--medical-amber)); }
+  .bg-medical-amber-light { background-color: oklch(0.97 0.04 58); }
+  .text-medical-green { color: oklch(var(--medical-green)); }
+  .bg-medical-green-light { background-color: oklch(0.94 0.04 155); }
+
+  /* Emergency-size text for critical info display */
+  .text-emergency-xl { font-size: clamp(1.5rem, 4vw, 2.25rem); font-weight: 700; }
+  .text-emergency-lg { font-size: clamp(1.125rem, 3vw, 1.5rem); font-weight: 600; }
+
+  /* Medical card shadow */
+  .shadow-medical {
+    box-shadow: 0 1px 3px 0 oklch(0.18 0.015 240 / 0.08),
+                0 4px 12px 0 oklch(0.18 0.015 240 / 0.06);
+  }
+
+  /* Print-friendly emergency page */
+  @media print {
+    .no-print { display: none !important; }
+    body { background: white !important; }
+    .print-full { max-width: 100% !important; }
+  }
+}
